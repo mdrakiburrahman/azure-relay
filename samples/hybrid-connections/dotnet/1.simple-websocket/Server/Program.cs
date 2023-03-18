@@ -32,7 +32,8 @@ namespace Server
             var tokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider(keyname, key);
             var listener = new HybridConnectionListener(new Uri(String.Format("sb://{0}/{1}", ns, hc)), tokenProvider);
             
-            // Subscribe to the status events
+            // Subscribe to the status events and provide monitoring
+            // transparency into the client
             listener.Connecting += (o, e) => { Console.WriteLine("Connecting"); };
             listener.Offline += (o, e) => { Console.WriteLine("Offline"); };
             listener.Online += (o, e) => { Console.WriteLine("Online"); };
@@ -49,6 +50,8 @@ namespace Server
             Task.Run(() => Console.In.ReadLineAsync().ContinueWith((s) => { cts.Cancel(); }));
 #pragma warning restore CS4014
 
+            // Enters the accept loop where new incoming connections are being
+            // awaited and then handed off to a parallel task for handling: 
             do
             {
                 // Accept the next available, pending connection request. 
@@ -58,16 +61,21 @@ namespace Server
                 if (relayConnection == null)
                     break;
 
-                // The following task processes a new session. We turn off the 
-                // warning here since we intentially don't 'await' 
-                // this call, but rather let the task handdling the connection 
-                // run out on its own without holding for it
-
+                // We turn off the warning here since we intentionally don't
+                // 'await' this call, but rather let the task handling the
+                // connection run out on its own without holding for it
+                //
+                // The task processes a new session. The connection is a fully
+                // bi=drectional stream that the code puts a stream reader and a
+                // stream writer over. That allows the code to read UTF-8 text
+                // data that comes from the sender and to write text replies
+                // back.
+                //
 #pragma warning disable CS4014 
                 Task.Run(async () =>
                 {
                     Console.WriteLine("New session");
-                    // The connection is a fully bidrectional stream. 
+                    // The connection is a fully bi-directional stream. 
                     // We put a stream reader and a stream writer over it 
                     // that allows us to read UTF-8 text data that comes from 
                     // the sender and to write text replies back.
@@ -85,7 +93,8 @@ namespace Server
                             await relayConnection.ShutdownAsync(cts.Token);
                             break;
                         }
-                        // Output the line on the console
+                        // Output received line to the console and write it back
+                        // to the client, prefixed with "Echo:"
                         Console.WriteLine(line);
                         // Write the line back to the client, prepending "Echo:"
                         await writer.WriteLineAsync("Echo: " + line);

@@ -26,21 +26,25 @@ namespace Client
             var keyname = args[2];
             var key = args[3];
 
-            // Create a new hybrid connection client
+            // The client creates a new hybrid connection client and creates a new connection
+            // right away.
             var tokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider(keyname, key);
             var client = new HybridConnectionClient(new Uri(String.Format("sb://{0}/{1}", ns, hc)),tokenProvider);
 
             // Initiate the connection
             var relayConnection = await client.CreateConnectionAsync();
 
-            // We run two conucrrent loops on the connection. One 
-            // reads input from the console and writes it to the connection 
-            // with a stream writer. The other reads lines of input from the 
-            // connection with a stream reader and writes them to the console. 
-            // Entering a blank line will shut down the write task after 
-            // sending it to the server. The server will then cleanly shut down
-            // the connection will will terminate the read task.
-            
+            // We run two concurrent loops on the connection. 
+            //
+            // 1. Reads input from the console and writes it to the connection
+            //    with a stream writer. 
+            //
+            // 2. Reads lines of input from the connection with a stream reader
+            //    and writes them to the console. Entering a blank line will
+            //    shut down the write task after sending it to the server. The
+            //    server will then cleanly shut down the connection and will
+            //    terminate the read task.
+            //
             var reads = Task.Run(async () => {
                 // initialize the stream reader over the connection
                 var reader = new StreamReader(relayConnection);
