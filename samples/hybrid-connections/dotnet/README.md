@@ -3,7 +3,7 @@
 Websocket: ➡️
 HTTP: 🕸️
 
-1. [ ] [➡️ `1.simple-websocket`](./1.simple-websocket/README.md) - The "Simple Websocket" sample illustrates the basic functions of the API and shows how to bi-directionally exchange blocks of text over a connection
+1. [x] [➡️ `1.simple-websocket`](./1.simple-websocket/README.md) - The "Simple Websocket" sample illustrates the basic functions of the API and shows how to bi-directionally exchange blocks of text over a connection
 2. [ ] [➡️ `2.thrift`](./2.thrift/README.md) - The "Thrift" sample is a variation of the C# sample that is part of the Apache Thrift project and shows how to use the Thrift RPC model
 over Hybrid Connections.
 3. [ ] [➡️ `3.bond`](./3.bond/README.md) - The "Bond" sample illustrates how to use Microsoft Bond Comm RPC with the Relay. The sample includes an standardalone implementation of 
