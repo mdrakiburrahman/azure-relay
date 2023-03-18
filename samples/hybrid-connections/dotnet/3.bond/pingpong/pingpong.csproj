@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>pingpong</RootNamespace>
     <AssemblyName>pingpong</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />

@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>notifyevent</RootNamespace>
     <AssemblyName>notifyevent</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
