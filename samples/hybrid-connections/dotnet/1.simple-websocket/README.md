@@ -96,13 +96,14 @@ Notice how the Server keeps on listening even after the client exits.
 
 ## Scale
 
-You can start multiple server instances bound to the same Hybrid Connection to see the effects of the Relay's load balancing capability, as client connections will be distributed across existing listeners, up to 25 concurrent.
- * `TODO` In less confusing words....
+You can start multiple server instances bound to the same Hybrid Connection to see the effects of the Relay's load balancing capability, as client connections will be distributed across existing listeners, up to 25 concurrent (for a given Server).
+ 
+So for example:
 
-You can obviously also start multiple server instances bound to the same Hybrid Connection concurrently on different machines. 
- * `TODO` In less confusing words....
+![Clients and Servers](_images/5.scale-1.png)
 
-You can create several hundred concurrent client instances if you like.
- * `TODO` In less confusing words....
+![Clients and Servers](_images/5.scale-2.png)
 
+![Clients and Servers](_images/5.scale-3.png)
 
+![Clients and Servers](_images/5.scale-4.png)
