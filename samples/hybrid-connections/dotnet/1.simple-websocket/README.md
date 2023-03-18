@@ -107,3 +107,5 @@ So for example:
 ![Clients and Servers](_images/5.scale-3.png)
 
 ![Clients and Servers](_images/5.scale-4.png)
+
+![Clients and Servers](_images/5.scale-5.png)
