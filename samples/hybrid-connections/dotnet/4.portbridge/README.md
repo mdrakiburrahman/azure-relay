@@ -135,3 +135,6 @@ For named pipes, the configuration is similar, even though there are no firewall
   * [PortBridge with pictures](https://learn.microsoft.com/de-de/archive/msdn-magazine/2014/july/azure-web-sites-hybrid-connectivity-connecting-azure-web-sites-to-lob-apps-using-portbridge)
   * [Github](https://github.com/dynamicdeploy/portbridge)
 * Hybrid connections in App Service: [Link](https://learn.microsoft.com/en-us/azure/app-service/app-service-hybrid-connections)
+* AzBridge Github: 
+  * [README](https://github.com/Azure/azure-relay-bridge)
+    * Has Kubernetes and a Dockerfile that isn't old!
